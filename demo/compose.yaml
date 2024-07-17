@@ -1,0 +1,24 @@
+services:
+  springboot-app:
+    container_name: springapi_questions
+    image: springboot-questions
+    restart: always
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      MYSQL_HOST: questions
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_PORT: 3306
+
+  mysqldb:
+    container_name: questions
+    image: mysql
+    volumes:
+      - C:\Users\dtera\Documents\Projects\SpringBoot\questions_db:/var/lib/mysql
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: questions
+      MYSQL_ROOT_PASSWORD: password
