@@ -13,6 +13,6 @@ import java.util.List;
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
     @Query(value = "SELECT user_questions.*, question_tags.*\n" +
             "FROM user_questions\n" +
-            "INNER JOIN question_tags ON user_questions.id = question_tags.question_id;", nativeQuery = true)
+            "LEFT JOIN question_tags ON user_questions.id = question_tags.question_id;", nativeQuery = true)
     List<Question> getAllQuestionsWithTags();
 }
